@@ -10,7 +10,7 @@ class GameSession(val players: List<Player>, val board: Board) {
         var winner:Player? = null
         println("Starting Game")
         while (!isWinnerDecided) {
-            players.forEach { player ->
+            for(player in players) {
                 println("${player.name} chance to play at ${player.getLocation()}")
                 val playerMove = player.play()
                 println("${player.name} played $playerMove")
@@ -19,6 +19,7 @@ class GameSession(val players: List<Player>, val board: Board) {
                 if (player.getLocation() == board.capacity){
                     isWinnerDecided = true
                     winner = player
+                    break
                 }
             }
         }
